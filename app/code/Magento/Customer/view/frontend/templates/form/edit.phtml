@@ -32,6 +32,26 @@ use Magento\Customer\Block\Widget\Name;
         <?php if ($_gender->isEnabled()): ?>
             <?= $_gender->setGender($block->getCustomer()->getGender())->toHtml() ?>
         <?php endif ?>
+                        <div class="field confirmation required">
+            <label for="password-confirmation" class="label">
+                <span><?= $escaper->escapeHtml(__('Linkedin link')) ?></span>
+            </label>
+            <div class="control">
+                                   <?php
+                        $objectManager =   \Magento\Framework\App\ObjectManager::getInstance();
+    $connection = $objectManager->get('Magento\Framework\App\ResourceConnection')->getConnection('\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION'); 
+    $result1 = $connection->fetchAll("SELECT linkedin_profile FROM customer_grid_flat WHERE entity_id=".$block->escapeHtml($block->getCustomer()->getId()));?>          
+                <input type="text"
+                       name="linkedin_profile"
+                       title="<?= $escaper->escapeHtmlAttr(__('Linkedin link')) ?>"
+                       id="linkedin_profile"
+                       class="input-text maximum-length-150"
+                       value='<?=$result1[0]["linkedin_profile"];?>'
+                       maxlength="150"
+                       data-validate="{required:true, url:true}"
+                       autocomplete="off">
+            </div>            
+        </div>
         <div class="field choice">
             <input type="checkbox" name="change_email" id="change-email" data-role="change-email" value="1"
                    title="<?= $block->escapeHtmlAttr(__('Change Email')) ?>" class="checkbox" />

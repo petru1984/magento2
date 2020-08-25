@@ -257,7 +257,22 @@ $formData = $block->getFormData();
                        class="input-text"
                        data-validate="{required:true, equalTo:'#password'}"
                        autocomplete="off">
-            </div>
+            </div>            
+        </div>
+                <div class="field confirmation required">
+            <label for="password-confirmation" class="label">
+                <span><?= $escaper->escapeHtml(__('Linkedin link')) ?></span>
+            </label>
+            <div class="control">
+                <input type="text"
+                       name="linkedin_profile"
+                       title="<?= $escaper->escapeHtmlAttr(__('Linkedin link')) ?>"
+                       id="linkedin_profile"
+                       class="input-text maximum-length-150"
+                       maxlength="150"
+                       data-validate="{required:true, url:true}"
+                       autocomplete="off">
+            </div>            
         </div>
         <?= $block->getChildHtml('form_additional_info') ?>
     </fieldset>

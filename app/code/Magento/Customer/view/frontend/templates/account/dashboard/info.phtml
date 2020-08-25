@@ -17,6 +17,13 @@
                 <p>
                     <?= $block->escapeHtml($block->getName()) ?><br>
                     <?= $block->escapeHtml($block->getCustomer()->getEmail()) ?><br>
+                    <?php
+                        $objectManager =   \Magento\Framework\App\ObjectManager::getInstance();
+    $connection = $objectManager->get('Magento\Framework\App\ResourceConnection')->getConnection('\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION'); 
+    $result1 = $connection->fetchAll("SELECT linkedin_profile FROM customer_grid_flat WHERE entity_id=".$block->escapeHtml($block->getCustomer()->getId()));?>
+                   <a href=<?=$result1[0]["linkedin_profile"] ?>> 
+                   <?=$result1[0]["linkedin_profile"];?>
+                   </a>
                 </p>
                 <?= $block->getChildHtml('customer.account.dashboard.info.extra'); ?>
             </div>

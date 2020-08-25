@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Linkedin\Linkedin\Api\LinkedinRepositoryInterface" type="Linkedin\Linkedin\Model\LinkedinRepository"/>
+	<preference for="Linkedin\Linkedin\Api\Data\LinkedinInterface" type="Linkedin\Linkedin\Model\Data\Linkedin"/>
+	<preference for="Linkedin\Linkedin\Api\Data\LinkedinSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+</config>
